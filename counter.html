@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samen Zijn Counter</title>
+    <style>
+        body {
+            background-color: #800000; /* Bordeauxrode achtergrondkleur */
+            color: white; /* Tekstkleur */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Volledige viewporthoogte */
+            margin: 0;
+        }
+
+        button {
+            background-color: #4CAF50; /* Groene knopkleur */
+            color: white; /* Tekstkleur van de knop */
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Donkerdere groene kleur bij hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Hoelang We Samen Zijn</h1>
+    <p id="counter">0 dagen, 0 uren, 0 minuten, 0 seconden</p>
+    <button onclick="window.location.href='index.html'">Terug naar Index</button>
+    
+    <script>
+        function updateCounter() {
+            // Datum waarop jullie samen zijn begonnen
+            var startDate = new Date("2022-08-23");
+            
+            // Huidige datum en tijd
+            var currentDate = new Date();
+            
+            // Bereken het verschil in milliseconden
+            var timeDiff = currentDate - startDate;
+            
+            // Bereken het aantal dagen, uren, minuten en seconden
+            var days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+            
+            // Update de HTML van de counter
+            document.getElementById("counter").innerHTML = days + " dagen, " + hours + " uren, " + minutes + " minuten, " + seconds + " seconden";
+        }
+        
+        // Update de counter om de seconde
+        setInterval(updateCounter, 1000);
+    </script>
+</body>
+</html>
